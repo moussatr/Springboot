@@ -16,7 +16,7 @@ import com.sprintboot.demo.modele.Jeu;
 import com.sprintboot.demo.service.JeuService;
 
 @RestController
-@RequestMapping("/api/store")
+@RequestMapping("/api")
 public class JeuController {
 	
 	private final JeuService jeuService;
@@ -25,7 +25,7 @@ public class JeuController {
 		this.jeuService = jeuService; 
 	}
 
-	@PostMapping("/games")
+	@PostMapping("/store/games")
 	public Jeu create(@RequestBody Jeu jeu) {
 	    System.out.println("Nouveau jeu ajouter");
 	    System.out.println("---------------------------------------------");
@@ -34,19 +34,19 @@ public class JeuController {
 		
 	}
 	
-	@GetMapping("/games")
+	@GetMapping("/store/games")
 	public List<Jeu> read() {
 		return jeuService.read();
 	}
 	
-	@GetMapping("/games/{JEU_ID}")
+	@GetMapping("/store/games/{JEU_ID}")
 	public Optional<Jeu> readjeubyID(@PathVariable Long JEU_ID, @RequestBody Jeu jeu) {
 		return jeuService.readjeubyID(JEU_ID);
 	}
 	
 
     
-	 @DeleteMapping("/games/{JEU_ID}")
+	 @DeleteMapping("/store/games/{JEU_ID}")
 	 public String delete(@PathVariable Long JEU_ID) {
 		 return jeuService.delete(JEU_ID);
 	 }
