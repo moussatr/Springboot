@@ -14,7 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -29,14 +29,21 @@ public class User {
 	@Column(length = 80)
 	private String email;
 	
+	 @OneToMany(mappedBy = "user")
+	    private List<Friend> friends = new ArrayList<>();
 	
+    public List<Friend> getFriends() {
+		return friends;
+	}
+
+	public void setFriends(List<Friend> friends) {
+		this.friends = friends;
+	}
 	@ManyToMany
-	@JoinTable(name = "USER_GAME",
-	joinColumns = @JoinColumn(name = "USER_ID"),
-	inverseJoinColumns = @JoinColumn(name = "JEU_ID"))
-	private List<Jeu> games = new ArrayList<>();
-	
-	
+    @JoinTable(name = "user_game",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "game_id"))
+    private List<Jeu> games;
 
 	
 	public User() {
@@ -44,6 +51,14 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public List<Jeu> getGames() {
+		return games;
+	}
+
+	public void setGames(List<Jeu> games) {
+		this.games = games;
+	}
+
 	public Long getUSER_ID() {
 		return USER_ID;
 	}
@@ -66,12 +81,7 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public List<Jeu> getGames() {
-		return games;
-	}
-	public void setGames(List<Jeu> games) {
-		this.games = games;
-	}
+
     
 	
 	

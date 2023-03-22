@@ -1,6 +1,7 @@
 package com.sprintboot.demo.controller;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,6 +37,7 @@ public class JeuController {
 	
 	@GetMapping("/store/games")
 	public List<Jeu> read() {
+		
 		return jeuService.read();
 	}
 	
@@ -51,4 +53,21 @@ public class JeuController {
 		 return jeuService.delete(JEU_ID);
 	 }
 
+	 
+	  @GetMapping("/available")
+	    public List<Jeu> Jeudispos() {
+		     
+	        return jeuService.Jeudispos();
+	    }
+	  
+
+	    @GetMapping("/{userId}/owned")
+	    public List<Jeu> MesJeux(@PathVariable Long userId) {
+	        return jeuService.MesJeux(userId);
+	    }
+	    
+	    @PostMapping("/{userId}/buy/{gameId}")
+	    public Jeu Jeu_a_Achete(@PathVariable Long userId, @PathVariable Long gameId) {
+	        return jeuService.Jeu_a_Achete(userId, gameId);
+	    }
 }

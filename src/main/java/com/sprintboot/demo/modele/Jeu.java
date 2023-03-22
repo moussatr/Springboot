@@ -1,6 +1,7 @@
 package com.sprintboot.demo.modele;
 
-import java.util.ArrayList;
+
+
 
 import java.util.List;
 
@@ -9,8 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
+
 import jakarta.persistence.ManyToMany;
 
 import jakarta.persistence.Table;
@@ -27,11 +27,10 @@ public class Jeu {
 	@Column(length = 80)
 	private String cover;
     
-	@ManyToMany
-	@JoinTable(name = "USER_GAME",
-	joinColumns = @JoinColumn(name = "USER_ID"),
-	inverseJoinColumns = @JoinColumn(name = "JEU_ID"))
-	private List<User> user = new ArrayList<>();
+	@ManyToMany(mappedBy = "games")
+    private List<User> users;
+	
+	private boolean available;
 	
 	public Jeu() {
 		super();
@@ -59,11 +58,32 @@ public class Jeu {
 		this.cover = cover;
 	}
 	public List<User> getUser() {
-		return user;
+		return users;
 	}
 	public void setUser(List<User> user) {
-		this.user = user;
+		this.users = user;
 	}
+
+	
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
+	public boolean isAvailable() {
+		return available;
+	}
+
+	public void setAvailable(boolean available) {
+		this.available = available;
+	}
+
+	
+	
 
 
 }

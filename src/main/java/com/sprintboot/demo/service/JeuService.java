@@ -12,8 +12,10 @@ public interface JeuService {
 	List<Jeu> read();
 	Optional<Jeu> readjeubyID( Long JEU_ID);
 	
-
-	
 	String delete(Long JEU_ID);	
+	
+	List<Jeu> Jeudispos();
+	List<Jeu> MesJeux(Long USER_ID);
+	Jeu Jeu_a_Achete(Long USER_ID, Long JEU_ID);
 
 }

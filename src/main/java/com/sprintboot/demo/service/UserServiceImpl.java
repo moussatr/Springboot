@@ -32,30 +32,23 @@ public class UserServiceImpl implements UserService {
 		return userrepository.findAll();
 	}
 
-	@Override
-	public User update(User user, Long USER_ID) {
-		// TODO Auto-generated method stub
-		return userrepository.findById(USER_ID)
-				.map(u -> {
-					
-					u.setGames(user.getGames());
-					
-					
-					return userrepository.save(u);
-				}).orElseThrow(() -> new RuntimeException("Produit non trouvé"));
-	}
+	
 
-	@Override
-	public String delete(Long USER_ID) {
-		userrepository.deleteById(USER_ID); 
-		return "Utilisateur supprimer";
-	}
+
 
 	@Override
 	public Optional<User> readuserbyID( Long USER_ID) {
 	 	
 		return userrepository.findById(USER_ID);
 	}
+
+	@Override
+	public String delete(Long USER_ID) {
+		userrepository.deleteById(USER_ID);
+		return "Utilisateur supprimer";
+	}
+	
+	
 
 
 }

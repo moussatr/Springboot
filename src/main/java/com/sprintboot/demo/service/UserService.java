@@ -14,7 +14,7 @@ public interface UserService {
 	
 	Optional<User> readuserbyID( Long USER_ID);
 	
-	User update(User user, Long USER_ID);
+
 	
 	String delete(Long USER_ID);	
 
