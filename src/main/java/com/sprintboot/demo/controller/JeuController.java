@@ -61,12 +61,12 @@ public class JeuController {
 	    }
 	  
 
-	    @GetMapping("/{userId}/owned")
+	    @GetMapping("/users/{userId}/games")
 	    public List<Jeu> MesJeux(@PathVariable Long userId) {
 	        return jeuService.MesJeux(userId);
 	    }
 	    
-	    @PostMapping("/{userId}/buy/{gameId}")
+	    @PostMapping("/users/{userId}/games")
 	    public Jeu Jeu_a_Achete(@PathVariable Long userId, @PathVariable Long gameId) {
 	        return jeuService.Jeu_a_Achete(userId, gameId);
 	    }

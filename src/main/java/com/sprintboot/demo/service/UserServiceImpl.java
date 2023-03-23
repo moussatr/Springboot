@@ -47,6 +47,7 @@ public class UserServiceImpl implements UserService {
 		userrepository.deleteById(USER_ID);
 		return "Utilisateur supprimer";
 	}
+
 	
 	
 

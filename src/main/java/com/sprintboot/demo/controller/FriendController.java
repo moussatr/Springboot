@@ -27,13 +27,13 @@ public class FriendController {
 		this.friendService = friendService;
 	}
 
-    @PostMapping("/{userId}/{friendId}")
+    @PostMapping("/users/{userId}/friends")
     public Friend addFriend(@PathVariable Long userId, @PathVariable Long friendId)  {
 //    	  User user = friendService.readuserbyID(userId);
     	  return friendService.addFriend(userId,friendId);
     }
     
-    @DeleteMapping("/{userId}/{friendId}")
+    @DeleteMapping("/api/users/{userId}/friends/{friendId}")
     public Friend deleteFriend(@PathVariable Long userId, @PathVariable Long friendId)  {
 //    	  User user = friendService.readuserbyID(userId);
     	  return friendService.deleteFriend(userId,friendId);
